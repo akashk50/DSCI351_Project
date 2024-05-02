@@ -30,12 +30,12 @@ app.geometry('1600x900')
 
 #  initialization for 
 
-api_key = "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"
+api_key = "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"  # change this to a real API key
 openAIClient = OpenAI(api_key=api_key)
 
 dynamodb = boto3.resource('dynamodb',  
-    aws_access_key_id="AKIAXYKJVWVOJM53ZFTL",
-    aws_secret_access_key= "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",
+    aws_access_key_id="AKIAXYKJVWVOJM53ZFTL",  # change this to a new access key
+    aws_secret_access_key= "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",  # change this to a new secret access key
     region_name='us-east-1')
 dynamoTable = dynamodb.Table("user_scores")
 
