@@ -28,17 +28,27 @@ app = tk.Tk()
 app.title("iPrepper")
 app.geometry('1600x900')
 
-#  initialization for 
+import os
+import boto3
+from openai import OpenAI
 
-api_key = "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"  # change this to a real API key
+# Load keys from environment variables
+api_key = os.getenv("OPENAI_API_KEY")
+aws_access_key_id = os.getenv("AWS_ACCESS_KEY_ID")
+aws_secret_access_key = os.getenv("AWS_SECRET_ACCESS_KEY")
+aws_region = os.getenv("AWS_REGION", "us-east-1")  # default if not set
+
+# Initialize OpenAI client
 openAIClient = OpenAI(api_key=api_key)
 
-dynamodb = boto3.resource('dynamodb',  
-    aws_access_key_id="AKIAXYKJVWVOJM53ZFTL",  # change this to a new access key
-    aws_secret_access_key= "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",  # change this to a new secret access key
-    region_name='us-east-1')
+# Initialize DynamoDB client
+dynamodb = boto3.resource(
+    'dynamodb',
+    aws_access_key_id=aws_access_key_id,
+    aws_secret_access_key=aws_secret_access_key,
+    region_name=aws_region
+)
 dynamoTable = dynamodb.Table("user_scores")
-
 
 menu_frame = tk.Frame(app, bg='#2f3d44')
 main_frame = tk.Frame(app, bg='white')
