@@ -1,4 +1,4 @@
-# DSCI351_Project
+# iPrepper
 
 The API keys used to run the project on the local server, along with the DynamoDB account used for the project have been disabled. In addition, the MongoDB database used was on our local server, and for these reasons the code won't run given a download of the files. To have it run:
 
